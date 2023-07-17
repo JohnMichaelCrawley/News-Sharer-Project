@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Title -->
+<title>News Sharer Project</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+<body>
+    <!-- Container -->
+    <div class="container-fluid">
+    <!-- Header -->
+    <div class="header row border-bottom">
+        <div class="col-6">
+            <h1 class="font-italic font-weight-bold">News Sharer</h1>
+        </div>
+        <!-- My Posts / Logout -->
+        <div class="col-6">
+            <a class="float-end">logout</a>
+            <a class="float-end " style="margin-right: 10px;">My posts</a>
+        </div>
+    </div>
+    <!-- Add Content -->
+    <div class="add-content row mx-auto" style="width: 550px;">
+        <div class="col-12 border-bottom">
+            <form>
+                <input type="text" id="fname" placeholder="URL Title">
+                <input type="text" id="fname" placeholder="URL Link">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <!-- Content Shown -->
+    <div class="post row">
+        <div class="col">
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="card-body">
+                    <h5 class="card-title text-center">News Article Title</h5>
+                    <p class="card-subtitle mb-2 text-muted text-center">Posted by USER on April 10, 2008 6:30 AM</p>
+                    <p class="card-body text-center">News Article URL</p>
+                    <!-- Upvote / Downvote buttons -->
+                    <div class="float-start">
+                        <a href="#" class="btn btn-success">Upvote</a>
+                        <a href="#" class="btn btn-danger">Downvote</a>
+                    </div>
+                    <!-- Upvote / Downvote counters -->
+                    <div class="float-end">
+                        <p class="card-body text-center">Upvotes 1 | Downvotes 0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+  </body>
+</html>
+
+
+
