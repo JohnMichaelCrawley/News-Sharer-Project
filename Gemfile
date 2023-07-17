@@ -1,16 +1,30 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# Ruby Version 
 ruby "3.2.2"
+
+###############################################
+# GEMs used for this project (See README for more info)
+
+# Use sqlite3 as the database for Active Record
+gem "sqlite3", "~> 1.6.3"
+
+# Use Acts As Votable to create upvotes / downvotes for posts
+gem 'acts_as_votable' 
+
+# Use Devise for user login / register for the project
+gem 'devise', '~> 4.9', '>= 4.9.2'
+
+# Use Bootstrap as the CSS framework for the project
+gem 'bootstrap', '~> 5.3.0.alpha3'
+###############################################
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.6"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
-
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
