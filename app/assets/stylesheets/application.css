@@ -20,19 +20,16 @@
   {
     font-size: 45px;
   }
-
  /* Main Elements */
  .header
  {
     height: 70px;
     margin-bottom: 1%;
  }
-
  .add-content
  {
     margin-bottom: 5%;
  }
-
  .post
  {
     display: flex;
@@ -40,11 +37,22 @@
     width: 80%;
     margin: 0 auto;
  }
-
+ /* Header Links anchor link */
+ .header-links 
+ {
+    color: black;
+    text-decoration: none;
+ }
+ .header-links:hover
+ {
+    color: grey;
+ }
  /* Posts */
  .card-body
  {
-    line-height: 0;
+    line-height: 0; 
  }
+
+
 
 
