@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
   # root "articles#index"
@@ -8,6 +9,10 @@ Rails.application.routes.draw do
 
   # Root the main page to home.erb 
   root 'pages#home'
+
+# Custom sign-out route
+get '/users/sign_out', to: 'custom_sessions#destroy', as: :custom_destroy_user_session
+
 
 
 end

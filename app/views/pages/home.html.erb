@@ -23,8 +23,30 @@
         </div>
         <!-- My Posts / Logout -->
         <div class="col-6">
-            <a class="float-end header-links">logout</a>
+           
+        <% if user_signed_in? %>
+        <!-- class="float-end header-links" -->
+            <%= link_to "Sign Out", custom_destroy_user_session_path, method: :get, class: "float-end header-links"  %>
+
             <a class="float-end header-links" style="margin-right: 10px;">My posts</a>
+      
+      <%else %>
+        <!-- code here for else-->
+      
+      <% end %>
+
+        </div>
+    </div>
+    <!-- DEVISE messages-->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
+    <% if user_signed_in? %>
+
+    <!-- Greet the User-->
+    <div class="row">
+        <div class="col-12">
+            <p> Hello <%= current_user.email %> </p>
         </div>
     </div>
     <!-- Add Content -->
@@ -37,6 +59,7 @@
             </form>
         </div>
     </div>
+
     <!-- Content Shown -->
     <div class="post row">
         <div class="col">
@@ -58,6 +81,20 @@
             </div>
         </div>
     </div>
+  
+  <%else %>
+    <p>Please  <%= link_to "register for a new account", new_user_registration_path%> or <%= link_to 'sign in', new_user_session_path %> to view the contents on this website.</p>
+  
+
+
+
+    
+  
+  <% end %>
+  
+
+
+
 
     </div>
   </body>
