@@ -1,0 +1,2 @@
+module UserProfileAndPostsHelper
+end

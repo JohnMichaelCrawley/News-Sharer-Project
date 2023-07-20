@@ -14,5 +14,7 @@ Rails.application.routes.draw do
 get '/users/sign_out', to: 'custom_sessions#destroy', as: :custom_destroy_user_session
 
 
+# Set Route to User's profile and posts
+get 'user_profile_and_posts/profile', to: 'user_profile_and_posts#profile'
 
 end

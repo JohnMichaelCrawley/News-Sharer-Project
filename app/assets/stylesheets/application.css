@@ -26,9 +26,16 @@
     height: 70px;
     margin-bottom: 1%;
  }
- .add-content
+ .home-user-area
  {
-    margin-bottom: 5%;
+   margin-top: -40px;
+ }
+ .add-content form
+ {
+   margin-left: 25%;
+   margin-right:25%;
+   width: 50%;
+   margin-bottom: 2.5%;
  }
  .post
  {
@@ -36,6 +43,7 @@
     justify-content: center;
     width: 80%;
     margin: 0 auto;
+    padding-top: 2.5%;
  }
  /* Header Links anchor link */
  .header-links 
@@ -47,6 +55,19 @@
  {
     color: grey;
  }
+
+/* Add Posts Form */
+#addPostTitle
+{
+   width: 80%;
+   
+}
+#addPostURL
+{
+   width: 80%;
+}
+
+
  /* Posts */
  .card-body
  {

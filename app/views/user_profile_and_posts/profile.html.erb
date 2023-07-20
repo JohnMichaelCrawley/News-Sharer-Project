@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Title -->
+<title>News Sharer Project</title>
+<!-- Required meta tags -->
+<title>News Sharer Project - Profile</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+<body>
+    <!-- Container -->
+    <div class="container-fluid">
+    <!-- Header -->
+    <div class="header row border-bottom">
+        <div class="col-6">
+            <h1 class="font-italic font-weight-bold">News Sharer</h1>
+        </div>
+        <!-- My Posts / Logout -->
+        <div class="col-6">
+           
+        <% if user_signed_in? %>
+        <!-- class="float-end header-links" -->
+            <%= link_to "Sign Out", custom_destroy_user_session_path, method: :get, class: "float-end header-links"  %>
+            <%= link_to 'Home', root_path, class: "float-end header-links", style: "margin-right: 10px;" %>
+      
+      <%else %>
+        <!-- code here for else-->
+      
+      <% end %>
+
+        </div>
+    </div>
+    <!-- DEVISE messages-->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
+    <% if user_signed_in? %>
+
+    <!-- Greet the User-->
+    <div class="row">
+        <div class="col-12">
+            <h3> My Posts </h3>
+        </div>
+    </div>
+
+
+    <!-- Content Shown -->
+    <div class="post row">
+        <div class="col">
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                
+            </div>
+        </div>
+    </div>
+  
+  <%else %>
+    <p>Please  <%= link_to "register for a new account", new_user_registration_path%> or <%= link_to 'sign in', new_user_session_path %> to view the contents on this website.</p>
+  
+
+
+
+    
+  
+  <% end %>
+  
+
+
+
+
+    </div>
+  </body>
+</html>
+
+
+

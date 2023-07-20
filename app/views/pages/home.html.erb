@@ -27,8 +27,7 @@
         <% if user_signed_in? %>
         <!-- class="float-end header-links" -->
             <%= link_to "Sign Out", custom_destroy_user_session_path, method: :get, class: "float-end header-links"  %>
-
-            <a class="float-end header-links" style="margin-right: 10px;">My posts</a>
+            <%= link_to 'My posts', user_profile_and_posts_profile_path, class: "float-end header-links", style: "margin-right: 10px;" %>
       
       <%else %>
         <!-- code here for else-->
@@ -44,21 +43,42 @@
     <% if user_signed_in? %>
 
     <!-- Greet the User-->
-    <div class="row">
-        <div class="col-12">
-            <p> Hello <%= current_user.email %> </p>
+    <div class="row home-user-area border-bottom">
+        <div class="col-6">
+            <p> Hello <%= current_user.email.split('@').first %> </p>
+            <p>You last signed in at: <%= current_user.last_sign_in_at.strftime('%Y-%m-%d %H:%M:%S')  %></p>
+
+
+            <!-- DEVISE messages-->
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
         </div>
-    </div>
-    <!-- Add Content -->
-    <div class="add-content row mx-auto" style="width: 550px;">
-        <div class="col-12 border-bottom">
+
+        <div class="col-6">
             <form>
-                <input type="text" id="fname" placeholder="URL Title">
-                <input type="text" id="fname" placeholder="URL Link">
-                <input type="submit" value="Submit">
-            </form>
+            <input type="text" id="addPostTitle" placeholder="URL Title">
+                <select name="category" id="category"> 
+                <option selected="true" disabled="disabled">--Category--</option>       
+                <option value="Government">Government</option> 
+                <option value="Politics">Politics</option> 
+                <option value="Education">Education</option> 
+                <option value="Health">Health</option> 
+                <option value="Environment">Environment</option> 
+                <option value="Economy">Economy</option> 
+                <option value="Business">Business</option> 
+                <option value="Sports">Sports</option> 
+                <option value="Funny">Funny</option> 
+            </select>
+            <input type="text" id="addPostURL" placeholder="URL Link">
+            <input type="submit" value="Submit">
+        </form>
         </div>
     </div>
+
+
+
+
+
 
     <!-- Content Shown -->
     <div class="post row">
