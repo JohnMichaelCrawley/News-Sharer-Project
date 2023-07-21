@@ -86,7 +86,7 @@
           <!-- CATEGORY -->
           <div class="form-group">
             <%= form.select :category_id, options_for_select([
-              ['--Category--', '', { disabled: true }], # The value is an empty string since it's disabled
+              ['--Category--', '', { disabled: true, selected: true  }], # The value is an empty string since it's disabled
               ['Government', '1'], # Assuming 1 is the ID of the 'Government' category in the database
               ['Politics', '2'],
               ['Education', '3'],
@@ -130,27 +130,55 @@
 
 
     <!-- Content Shown -->
-    <div class="post row border-top">
-        <div class="col">
+    <!-- Loop through each post and create a card for it -->
+    <% if @posts.empty? %>
+    <p class="border-top">No news articles posted.</p>
+    <% else %>
+      <% @posts.reverse_each do |post| %>
+        <div class="post row border-top">
+          <div class="col">
             <div class="card shadow-lg p-3 mb-5 bg-white rounded">
-                <div class="card-body">
-                    <h5 class="card-title text-center">News Article Title</h5>
-                    <p class="card-subtitle mb-2 text-muted text-center">Posted by USER on April 10, 2008 6:30 AM</p>
-                    <p class="card-body text-center">News Article URL</p>
-                    <!-- Upvote / Downvote buttons -->
-                    <div class="float-start">
-                        <a href="#" class="btn btn-success">Upvote</a>
-                        <a href="#" class="btn btn-danger">Downvote</a>
-                    </div>
-                    <!-- Upvote / Downvote counters -->
-                    <div class="float-end">
-                        <p class="card-body text-center">Upvotes 1 | Downvotes 0</p>
-                    </div>
+              <div class="card-body">
+                <!-- Post title -->
+                <h5 class="card-title text-center"><%= post.title %></h5>
+    
+                <!-- Post information -->
+                <p class="card-subtitle mb-2 text-muted text-center">
+                  Posted by <%= post.user.email if post.user_id %>
+                  on <%= post.created_at&.strftime('%d/%m/%Y at %I:%M %p') %> | Category: <%= post.category.category if post.category_id  %> 
+                </p>
+                <!-- Post URL -->
+                <p class="card-body text-center">
+                  <!-- <%= post.url %> -->
+                  <a href="<%= post.url %>"> Link to the news article </a>
+                </p>
+    
+                <!-- Upvote / Downvote buttons -->
+                <div class="float-start">
+                  <a href="#" class="btn btn-success">Upvote</a>
+                  <a href="#" class="btn btn-danger">Downvote</a>
                 </div>
+                <!-- Upvote / Downvote counters -->
+                <div class="float-end">
+                  <p class="card-body text-center">
+                    Upvotes <%= post.upvotes %> | Downvotes <%= post.downvotes %>
+                  </p>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+      <% end %>
+    <% end %>
   
+  
+
+
+
+
+
+
+
   <%else %>
     <p>Please  <%= link_to "register for a new account", new_user_registration_path%> or <%= link_to 'sign in', new_user_session_path %> to view the contents on this website.</p>
   

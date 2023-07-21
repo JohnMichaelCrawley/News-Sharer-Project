@@ -4,8 +4,8 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.integer :postID
       t.string :title
       t.integer :categoryID
-      t.integer :upvotes
-      t.integer :downvotes
+      t.integer :upvotes, null: false, default: 0
+      t.integer :downvotes, null: false, default: 0s
       t.string :url
       t.datetime :timestamp
 
@@ -13,3 +13,4 @@ class CreatePosts < ActiveRecord::Migration[7.0]
     end
   end
 end
+
