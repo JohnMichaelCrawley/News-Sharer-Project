@@ -1,25 +1,71 @@
-<h2>Change your password</h2>
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Title -->
+<title>News Sharer Project - Sign Up</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+<body>
+    <!-- Container -->
+    <div class="container-fluid">
+    <!-- Header -->
+    <div class="header row border-bottom">
+        <div class="col-6">
+            <h1 class="font-italic font-weight-bold">News Sharer</h1>
+        </div>
+        <!-- My Posts / Logout -->
+        <div class="col-6">
+           
+        </div>
+    </div>
+    <!-- DEVISE messages-->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+    <div class="row">
+      <div class="mx-auto col-10 col-md-8 col-lg-6">
+     
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "form-change-password" }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+        <div class="form-group">
+          <%= f.label :password, "New password", class: "control-label" %><br />
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+          <% end %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation, "Confirm new password", class: "control-label" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+        </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
+        <div class="form-group">
+          <%= f.submit "Change my password", class: "btn btn-primary btn-block" %>
+        </div>
+      <% end %>
 
-<%= render "devise/shared/links" %>
+      <%= render "devise/shared/links" %>
+
+
+      </div>
+    </div>
+
+
+    </div>
+  </body>
+</html>
+
+
+
