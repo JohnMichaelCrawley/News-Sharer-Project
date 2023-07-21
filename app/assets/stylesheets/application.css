@@ -36,6 +36,8 @@
    margin-right:25%;
    width: 50%;
    margin-bottom: 2.5%;
+   margin: auto;
+   padding: 10%;
  }
  .post
  {
@@ -57,15 +59,18 @@
  }
 
 /* Add Posts Form */
-#addPostTitle
+#addPostTitle, #addPostURL, #addCategory, select
 {
-   width: 80%;
+   width: 80% !important;
    
 }
-#addPostURL
+input, select
 {
-   width: 80%;
+   display: block;
+   margin-bottom: 2.5%;
 }
+
+
 
 
  /* Posts */

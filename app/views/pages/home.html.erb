@@ -42,46 +42,95 @@
     
     <% if user_signed_in? %>
 
-    <!-- Greet the User-->
+    <!-- Greet the User -->
     <div class="row home-user-area border-bottom">
         <div class="col-6">
             <p> Hello <%= current_user.email.split('@').first %> </p>
-            <p>You last signed in at: <%= current_user.last_sign_in_at.strftime('%Y-%m-%d %H:%M:%S')  %></p>
-
-
-            <!-- DEVISE messages-->
+            <p>You last signed in at:</p>
+            <p><%= current_user.last_sign_in_at.strftime('%d/%m/%Y at %I:%M %p') %> UTC time</p>
+    
+            <!-- DEVISE messages -->
             <p class="notice"><%= notice %></p>
             <p class="alert"><%= alert %></p>
         </div>
 
-        <div class="col-6">
-            <form>
-            <input type="text" id="addPostTitle" placeholder="URL Title">
-                <select name="category" id="category"> 
-                <option selected="true" disabled="disabled">--Category--</option>       
-                <option value="Government">Government</option> 
-                <option value="Politics">Politics</option> 
-                <option value="Education">Education</option> 
-                <option value="Health">Health</option> 
-                <option value="Environment">Environment</option> 
-                <option value="Economy">Economy</option> 
-                <option value="Business">Business</option> 
-                <option value="Sports">Sports</option> 
-                <option value="Funny">Funny</option> 
-            </select>
-            <input type="text" id="addPostURL" placeholder="URL Link">
-            <input type="submit" value="Submit">
-        </form>
-        </div>
-    </div>
 
+
+        
+
+
+
+        
+
+
+
+
+        <div class="col-6">
+
+
+
+
+
+
+
+
+        <%= form_with(model: @post, url: posts_path, format: :html, data: { turbo: false }) do |form| %>
+          <!-- URL TITLE -->
+          <div class="form-group">
+            <%= form.text_field :title, id: "addPostTitle", class: "form-control", placeholder: "URL Title", required: true %>
+          </div>
+          <!-- URL LINK -->
+          <div class="form-group">
+            <%= form.text_field :url, id: "addPostURL", class: "form-control", placeholder: "URL Link", required: true %>
+          </div>
+          <!-- CATEGORY -->
+          <div class="form-group">
+            <%= form.select :category_id, options_for_select([
+              ['--Category--', '', { disabled: true }], # The value is an empty string since it's disabled
+              ['Government', '1'], # Assuming 1 is the ID of the 'Government' category in the database
+              ['Politics', '2'],
+              ['Education', '3'],
+              ['Health', '4'],
+              ['Environment', '5'],
+              ['Economy', '6'],
+              ['Business', '7'],
+              ['Sports', '8'],
+              ['Funny', '9']
+            ]), {}, class: "form-control" %>
+          </div>
+          <%= form.submit "Submit", class: "btn btn-primary" %>
+        <% end %>
+        
+        
+        
+
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+      
+      
 
 
 
 
 
     <!-- Content Shown -->
-    <div class="post row">
+    <div class="post row border-top">
         <div class="col">
             <div class="card shadow-lg p-3 mb-5 bg-white rounded">
                 <div class="card-body">

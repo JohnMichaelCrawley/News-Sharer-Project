@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   # Root the main page to home.erb 
   root 'pages#home'
 
+  # Create Posts Resource
+  resources :posts, only: [:create]
+  # , only: [:new, :create, :show]
+
+
 # Custom sign-out route
 get '/users/sign_out', to: 'custom_sessions#destroy', as: :custom_destroy_user_session
 
