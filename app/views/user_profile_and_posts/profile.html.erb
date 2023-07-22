@@ -46,16 +46,39 @@
     <!-- Greet the User-->
     <div class="row">
         <div class="col-12">
+            <h2> Hello <%= current_user.email.split('@').first %> </h2>
             <h3> My Posts </h3>
         </div>
     </div>
 
-
     <!-- Content Shown -->
     <div class="post row">
         <div class="col">
-            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
-                
+
+
+        
+        <!-- Loop over all posts with current user's id -->
+        <% Post.where(user_id: current_user.id).each do |post| %>
+          <div class="user_profile_my_posts card shadow-lg p-3 mb-5 bg-white rounded">
+            <!-- User's Post Information-->
+            <div class="user_profile_my_posts_information">
+              <h4>Title: <%= post.title %></h4>
+              <p>Date Posted: <%= post.created_at.strftime('%m/%d/%Y') %></p>
+              <p>Category:  <%= post.category.category if post.category_id  %> </p>
+              <a href="<%= post.url %>">Link to the news article</a>
+              <p>Upvotes <%= post.upvotes %> | Downvotes <%= post.downvotes %></p>
+            </div>
+            <!-- User's Post Actions (Edit / Delete)-->
+            <div class="user_profile_my_posts_actions">
+              <div class="float-start">
+                <a href="#" class="btn btn-success">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+
             </div>
         </div>
     </div>

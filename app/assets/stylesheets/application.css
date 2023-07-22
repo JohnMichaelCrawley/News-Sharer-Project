@@ -72,8 +72,6 @@ input, select
 }
 
 
-
-
  /* Posts */
  .card-body
  {
@@ -81,5 +79,12 @@ input, select
  }
 
 
+ /* User's Profile / My Posts */
+ .user_profile_my_posts
+ {
+   line-height: 1.2; 
+ }
+ .user_profile_my_posts_information{}
+ .user_profile_my_posts_actions{}
 
 
