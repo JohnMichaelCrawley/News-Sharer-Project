@@ -12,8 +12,9 @@ Rails.application.routes.draw do
 
   # Create Posts Resource
   resources :posts, only: [:create]
-  # , only: [:new, :create, :show]
-
+  # For deletion 
+  resources :posts, only: [:destroy]
+  resources :posts
 
 # Custom sign-out route
 get '/users/sign_out', to: 'custom_sessions#destroy', as: :custom_destroy_user_session
@@ -21,5 +22,8 @@ get '/users/sign_out', to: 'custom_sessions#destroy', as: :custom_destroy_user_s
 
 # Set Route to User's profile and posts
 get 'user_profile_and_posts/profile', to: 'user_profile_and_posts#profile'
+
+
+
 
 end

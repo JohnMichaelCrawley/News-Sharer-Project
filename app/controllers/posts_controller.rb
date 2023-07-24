@@ -20,10 +20,27 @@ class PostsController < ApplicationController
     end
   end
 
+
+
+  def destroy
+    @post = Post.find(params[:id])
+    
+    if @post.destroy
+      redirect_to user_profile_and_posts_profile_path
+    else
+      flash[:alert] = @post.errors.full_messages.inspect
+      redirect_to user_profile_and_posts_profile_path
+    end
+  end
+  
+  
   
 
-  private
 
+
+
+
+  private
   def post_params
     params.require(:post).permit(:title, :url, :category_id)
   end

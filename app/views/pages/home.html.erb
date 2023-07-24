@@ -86,7 +86,6 @@
           <!-- CATEGORY -->
           <div class="form-group">
             <%= form.select :category_id, options_for_select([
-              ['--Category--', '', { disabled: true, selected: true  }], # The value is an empty string since it's disabled
               ['Government', '1'], # Assuming 1 is the ID of the 'Government' category in the database
               ['Politics', '2'],
               ['Education', '3'],
@@ -98,6 +97,7 @@
               ['Funny', '9']
             ]), {}, class: "form-control" %>
           </div>
+
           <%= form.submit "Submit", class: "btn btn-primary" %>
         <% end %>
         

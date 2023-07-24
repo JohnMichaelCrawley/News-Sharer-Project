@@ -54,9 +54,9 @@
     <!-- Content Shown -->
     <div class="post row">
         <div class="col">
-
-
-        
+        <% if Post.where(user_id: current_user.id).empty? %>
+          <p class="border-top border-bottom">You didn't make any news posts.</p>
+        <% else %>  
         <!-- Loop over all posts with current user's id -->
         <% Post.where(user_id: current_user.id).each do |post| %>
           <div class="user_profile_my_posts card shadow-lg p-3 mb-5 bg-white rounded">
@@ -72,13 +72,51 @@
             <div class="user_profile_my_posts_actions">
               <div class="float-start">
                 <a href="#" class="btn btn-success">Edit</a>
-                <a href="#" class="btn btn-danger">Delete</a>
+                <a href="#" class="btn btn-danger" data-post-id="<%= post.id %>" onclick="confirmDelete(event)" data-turbolinks="false">Delete</a>
+          
               </div>
             </div>
           </div>
         <% end %>
+        <% end %>
+        <!-- JavaScript for AJAX Delete -->
+        <script>
+        function confirmDelete(event) {
+          event.preventDefault();
+          const postID = event.target.dataset.postId;
+          const confirmation = confirm("Are you sure you want to delete this post?");
+      
+          if (confirmation) {
+            // If the user confirms, send AJAX request for deletion
+            const url = `/posts/${postID}`;
+            const token = document.querySelector('meta[name="csrf-token"]').content;
+      
+            const xhr = new XMLHttpRequest();
+            xhr.open("DELETE", url);
+            xhr.setRequestHeader("X-CSRF-Token", token);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onload = function () {
+              if (xhr.status === 200) {
+                // Handle successful deletion
+                console.log('Post deleted successfully.');
+
+    
 
 
+              } else {
+                console.error('Failed to delete post.');
+              }
+            };
+            xhr.onerror = function () {
+              console.error('Error occurred while deleting post.');
+            };
+            xhr.send();
+          }
+        }
+      </script>
+      
+        
+      
             </div>
         </div>
     </div>
