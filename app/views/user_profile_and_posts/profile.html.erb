@@ -66,14 +66,17 @@
               <p>Date Posted: <%= post.created_at.strftime('%m/%d/%Y') %></p>
               <p>Category:  <%= post.category.category if post.category_id  %> </p>
               <a href="<%= post.url %>">Link to the news article</a>
-              <p>Upvotes <%= post.upvotes %> | Downvotes <%= post.downvotes %></p>
+
+              <p class="card-body text-center">
+              Upvotes <span id="upvote-count-<%= post.id %>"><%= post.cached_votes_up %></span> | 
+             Downvotes <span id="downvote-count-<%= post.id %>"><%= post.cached_votes_down %></span>
+           </p>
             </div>
             <!-- User's Post Actions (Edit / Delete)-->
             <div class="user_profile_my_posts_actions">
               <div class="float-start">
                 <a href="#" class="btn btn-success">Edit</a>
                 <a href="#" class="btn btn-danger" data-post-id="<%= post.id %>" onclick="confirmDelete(event)" data-turbolinks="false">Delete</a>
-          
               </div>
             </div>
           </div>

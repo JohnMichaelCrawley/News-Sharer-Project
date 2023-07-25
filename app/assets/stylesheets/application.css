@@ -89,7 +89,8 @@ input, select
 
 
 /* Upvote / Downvote */
-.voting-container {
+.voting-container 
+{
    display: flex;
    gap: 4px; /* Optional: Add some space between the buttons */
  }
