@@ -88,3 +88,12 @@ input, select
  .user_profile_my_posts_actions{}
 
 
+/* Upvote / Downvote */
+.voting-container {
+   display: flex;
+   gap: 4px; /* Optional: Add some space between the buttons */
+ }
+.voting-button
+{
+   width: 120px !important;
+}

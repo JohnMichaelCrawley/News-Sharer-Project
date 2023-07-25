@@ -8,8 +8,9 @@ class Post < ApplicationRecord
 
     before_save :set_default_values
 
+    acts_as_votable
+
     private
-  
     def set_default_values
       self.upvotes ||= 0
       self.downvotes ||= 0

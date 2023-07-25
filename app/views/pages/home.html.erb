@@ -132,6 +132,20 @@
     <!-- Content Shown -->
     <!-- Loop through each post and create a card for it -->
     <% if @posts.empty? %>
+
+
+    <%= content_tag "div", id: "upvote-link-#{post.id}" do %>
+    <%= render 'posts/upvote_link', post: post %>
+  <% end %>
+
+
+
+
+
+
+
+
+
     <p class="border-top">No news articles posted.</p>
     <% else %>
       <% @posts.reverse_each do |post| %>
@@ -152,18 +166,82 @@
                   <!-- <%= post.url %> -->
                   <a href="<%= post.url %>"> Link to the news article </a>
                 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
                 <!-- Upvote / Downvote buttons -->
                 <div class="float-start">
-                  <a href="#" class="btn btn-success">Upvote</a>
-                  <a href="#" class="btn btn-danger">Downvote</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- link_to -->
+                <div class="voting-container">
+                  <%= button_to "Upvote", upvote_post_path(post), method: :post, class: "voting-button btn btn-success" %>
+                  <%= button_to "Downvote", downvote_post_path(post), method: :post, class: "voting-button btn btn-danger"%>
                 </div>
+             
+             
+             
+             
+             
+             
+                  </div>
                 <!-- Upvote / Downvote counters -->
                 <div class="float-end">
                   <p class="card-body text-center">
-                    Upvotes <%= post.upvotes %> | Downvotes <%= post.downvotes %>
+                    Upvotes <span id="upvote-count-<%= post.id %>"><%= post.cached_votes_up %></span> | 
+                    Downvotes <span id="downvote-count-<%= post.id %>"><%= post.cached_votes_down %></span>
                   </p>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </div>
             </div>
           </div>

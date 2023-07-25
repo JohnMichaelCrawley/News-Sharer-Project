@@ -1,0 +1,4 @@
+# app/views/posts/_upvote_link.html.erb
+<%= link_to upvote_post_path(post), method: :patch, remote: true, id: "upvote-#{post.id}" do %>
+  Downvoted. Go upvote
+<% end %>

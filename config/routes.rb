@@ -24,6 +24,14 @@ get '/users/sign_out', to: 'custom_sessions#destroy', as: :custom_destroy_user_s
 get 'user_profile_and_posts/profile', to: 'user_profile_and_posts#profile'
 
 
+# Routing for upvotes and downvotes 
+resources :posts
+resources :posts do
+  member do
+    post "upvote"
+    post "downvote"
+  end
+end
 
 
 end
