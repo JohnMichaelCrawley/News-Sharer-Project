@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  # Update POST section
+  before_action :set_post, only: [:edit, :update]
+
+
   # Define a new post
   def new
     @post = Post.new
@@ -38,6 +42,23 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.downvote_by current_user
     redirect_to @post
+  end
+
+  # Updating the post
+  def update
+    if @post.update(post_params)
+      redirect_to @post, notice: 'Post was successfully updated.'
+    else
+      render :edit
+    end
+  end
+  private
+  def set_post
+    @post = Post.find(params[:id])
+  end
+  def edit
+    @post = Post.find(params[:id])
+    # Add any necessary logic here
   end
   private
   def post_params

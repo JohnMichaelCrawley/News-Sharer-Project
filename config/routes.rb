@@ -1,37 +1,25 @@
 Rails.application.routes.draw do
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  # Defines the root path route ("/")
-  # root "articles#index"
-
-  # Set the main page for the website by
-  # setting a GET request for the index 
-
-  # Root the main page to home.erb 
   root 'pages#home'
 
-  # Create Posts Resource
-  resources :posts, only: [:create]
-  # For deletion 
-  resources :posts, only: [:destroy]
-  resources :posts
-
-# Custom sign-out route
-get '/users/sign_out', to: 'custom_sessions#destroy', as: :custom_destroy_user_session
-
-
-# Set Route to User's profile and posts
-get 'user_profile_and_posts/profile', to: 'user_profile_and_posts#profile'
-
-
-# Routing for upvotes and downvotes 
-resources :posts
-resources :posts do
-  member do
-    post "upvote"
-    post "downvote"
+  resources :posts, only: [:create, :edit, :update, :destroy] do
+    member do
+      post "upvote"
+      post "downvote"
+    end
   end
-end
 
+  # Custom sign-out route
+  get '/users/sign_out', to: 'custom_sessions#destroy', as: :custom_destroy_user_session
 
+  # Set Route to User's profile and posts
+  get 'user_profile_and_posts/profile', to: 'user_profile_and_posts#profile'
+
+  # Define the custom route for editing a post under the user's profile
+  patch 'users/:user_id/posts/:id/edit', to: 'user_profile_and_posts#edit', as: :edit_user_profile_post
+
+  # For editing posts
+  resources :users do
+    resources :posts
+  end
 end

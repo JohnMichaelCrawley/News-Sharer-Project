@@ -11,4 +11,16 @@ class UserProfileAndPostsController < ApplicationController
       def redirect_to_profile
         redirect_to user_profile_and_posts_profile_path
       end
+
+
+
+
+      def edit
+        @user = User.find(params[:user_id])
+        @post = @user.posts.find(params[:id])
+        # Add any necessary logic here
+        render 'edit-post' # Render the edit-post.html.erb view
+      end
+
+
 end

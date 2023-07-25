@@ -1,0 +1,136 @@
+<!-- app/views/posts/edit.html.erb -->
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Title -->
+<title>News Sharer Project</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+<body>
+    <!-- Container -->
+    <div class="container-fluid">
+    <!-- Header -->
+    <div class="header row border-bottom">
+        <div class="col-6">
+            <h1 class="font-italic font-weight-bold">News Sharer</h1>
+        </div>
+        <!-- My Posts / Logout -->
+        <div class="col-6">
+           
+        <% if user_signed_in? %>
+        <!-- class="float-end header-links" -->
+            <%= link_to "Sign Out", custom_destroy_user_session_path, method: :get, class: "float-end header-links"  %>
+            <%= link_to 'My posts', user_profile_and_posts_profile_path, class: "float-end header-links", style: "margin-right: 10px;" %>
+      
+      <%else %>
+        <!-- code here for else-->
+      
+      <% end %>
+
+        </div>
+    </div>
+    <!-- DEVISE messages-->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
+    <% if user_signed_in? %>
+
+    <div class="Return to profile">
+      <%= link_to '← Back', user_profile_and_posts_profile_path, class: "btn btn-secondary" %>
+    </div>
+
+
+    <!-- Content Shown -->
+    <!-- Post to Edit-->
+
+    <div class="edit-post">
+    <h1>Edit News Post</h1>
+    <%= form_with(model: @post, url: post_path(@post), method: :patch) do |form| %>
+      <div class="form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+    
+      <div class="form-group">
+        <%= form.label :content %>
+        <%= form.text_field :url, class: "form-control" %>
+      </div>
+    
+      <!-- CATEGORY -->
+      <div class="form-group">
+        <%= form.label :category_id, "Category" %>
+        <%= form.select :category_id, options_for_select([
+          ['Government', '1'], # Assuming 1 is the ID of the 'Government' category in the database
+          ['Politics', '2'],
+          ['Education', '3'],
+          ['Health', '4'],
+          ['Environment', '5'],
+          ['Economy', '6'],
+          ['Business', '7'],
+          ['Sports', '8'],
+          ['Funny', '9']
+        ], selected: @post.category_id), {}, class: "form-control" %>
+      </div>
+    
+      <%= form.submit 'Update Post', class: "btn btn-primary" %>
+    <% end %> 
+  </div>
+  
+
+    
+    
+
+
+
+
+   
+    
+
+
+  
+  
+
+
+
+
+
+
+
+  <%else %>
+    <p>Please  <%= link_to "register for a new account", new_user_registration_path%> or <%= link_to 'sign in', new_user_session_path %> to view the contents on this website.</p>
+  
+
+
+
+    
+  
+  <% end %>
+  
+
+
+
+
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+

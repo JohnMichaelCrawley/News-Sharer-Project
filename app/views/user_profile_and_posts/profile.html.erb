@@ -75,7 +75,7 @@
             <!-- User's Post Actions (Edit / Delete)-->
             <div class="user_profile_my_posts_actions">
               <div class="float-start">
-                <a href="#" class="btn btn-success">Edit</a>
+              <a href="<%= edit_user_profile_post_path(post.user, post) %>" class="btn btn-success">Edit</a>
                 <a href="#" class="btn btn-danger" data-post-id="<%= post.id %>" onclick="confirmDelete(event)" data-turbolinks="false">Delete</a>
               </div>
             </div>

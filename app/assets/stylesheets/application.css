@@ -98,3 +98,11 @@ input, select
 {
    width: 120px !important;
 }
+
+/* Edit Post Form */
+.edit-post
+{
+   width: 50%;
+   margin: 0 auto;
+   display: block;
+}
