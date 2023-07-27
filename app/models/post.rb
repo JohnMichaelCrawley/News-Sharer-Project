@@ -14,6 +14,10 @@ class Post < ApplicationRecord
   def set_default_values
     self.upvotes ||= 0
     self.downvotes ||= 0
+    self.cached_votes_total ||= 0
+    self.cached_votes_score ||= 0
+    self.cached_votes_up ||= 0
+    self.cached_votes_down ||= 0
   end
 end
 
