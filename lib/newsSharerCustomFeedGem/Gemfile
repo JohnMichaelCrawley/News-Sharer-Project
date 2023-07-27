@@ -1,0 +1,16 @@
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+# Specify your gem's dependencies in newsSharerCustomFeedGem.gemspec
+gemspec
+# Comment out or remove the fixed version dependency on act_as_votable
+# gem 'act_as_votable', '0.13.2'
+
+gem 'acts_as_votable'
+
+gem "rake", "~> 13.0"
+
+gem "rspec", "~> 3.0"
+
+gem "rubocop", "~> 1.21"
