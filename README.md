@@ -17,7 +17,7 @@
 [See Bootstrap Github page for more information on this GEM](https://github.com/twbs/bootstrap-rubygem)
 
 
-* Custom GEM - 
+* Custom GEM - Custom GEM to sort the homepage feed where the more upvotes than vote gets bumped up to the top of the feed [See GEM](./lib/newsSharerCustomFeedGem/)
 
 
 
@@ -43,4 +43,4 @@
 
 * Deployment instructions
 
-* ...
+* 

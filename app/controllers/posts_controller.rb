@@ -3,7 +3,6 @@ class PostsController < ApplicationController
   # Update POST section
   before_action :set_post, only: [:edit, :update]
 
-
   # Define a new post
   def new
     @post = Post.new

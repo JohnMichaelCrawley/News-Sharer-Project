@@ -11,13 +11,17 @@ ruby "3.2.2"
 gem "sqlite3", "~> 1.6.3"
 
 # Use Acts As Votable to create upvotes / downvotes for posts
-gem 'acts_as_votable' 
+gem 'acts_as_votable'
 
 # Use Devise for user login / register for the project
 gem 'devise', '~> 4.9', '>= 4.9.2'
 
 # Use Bootstrap as the CSS framework for the project
 gem 'bootstrap', '~> 5.3.0.alpha3'
+
+# Custom GEM: News Sharer Custom Feed Gem
+gem 'newsSharerCustomFeedGem', '>= 0', path: 'lib/newsSharerCustomFeedGem'
+
 ###############################################
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
