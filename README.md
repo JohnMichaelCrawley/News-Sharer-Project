@@ -20,6 +20,38 @@
 * Custom GEM - Custom GEM to sort the homepage feed where the more upvotes than vote gets bumped up to the top of the feed [See GEM](./lib/newsSharerCustomFeedGem/)
 
 
+# Demostration 
+## User Registeration 
+This is a demostration of user creation working.  Therefore new news can be made and automatically 
+logged in to post or view other posts. 
+![User Registeration](Misc/Register.gif)
+
+## User Login 
+The user can also login if they are logged out or choose to logout. 
+![User Login](Misc/Login.gif)
+
+## News Post Creation 
+Creating a new post is easy. You access the main homepage and add the data to the relative fields 
+and post using, "submit 
+![News Post Creation](Misc/Create-Post.gif)
+
+## Post Organised By Upvotes 
+By creating a new news post, I check that it's below the post with one upvote, this shows that posts with less upvotes will be pushed below other posts. 
+![Posts Organised By Upvotes](Misc/Post-Shown-By-Most-Upvotes.gif)
+
+
+
+## Post Edit
+We can edit the post data, maybe the title is too long or the user selected the wrong category, we can edit any post by the user that is logged in. 
+![Post Edit](Misc/Edit-Post.gif)
+
+## Post Deletion 
+If the user doesn't like the post they made, they can delete the post, however, currently you need to refresh to update the page on the post being deleted
+![Post Deletion](Misc/Delete-Post.gif)
+
+
+
+
 
 
 

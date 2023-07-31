@@ -48,6 +48,12 @@
     line-height: 100px !important;
     padding-top: 2.5%;
  }
+ /* Custom padding for the login page to seperate desc from login/register */
+ .custom-padding-top
+ {
+   padding-top: 10px;
+ }
+ 
  /* Header Links anchor link */
  .header-links 
  {
